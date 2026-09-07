@@ -28,6 +28,7 @@ from __future__ import annotations
 import os
 import time
 from dataclasses import dataclass, field
+import sys
 
 from . import ast as a
 from .check import CheckResult
@@ -119,6 +120,9 @@ class Interpreter:
         self.out = out if out is not None else []
         self._t0 = time.monotonic_ns()
 
+        self.list_allocation_count = 0
+        self.list_allocation_bytes = 0        
+
     # ------------------------------------------------ host capabilities
     def make_runtime(self) -> CapValue:
         clock = CapValue("Clock", {
@@ -189,9 +193,21 @@ class Interpreter:
     def run_main(self):
         if "main" not in self.r.fns:
             raise NovaRuntimeError("no `main` function")
+
         fn = self.r.fns["main"].decl
         env = {fn.params[0].name: [self.make_runtime()]}
-        return self.eval(fn.body, env)
+
+        result = self.eval(fn.body, env)
+
+        if os.environ.get("NOVA_BENCH_LIST_ALLOC") == "1":
+            print(
+                f"NOVA_LIST_ALLOC "
+                f"bytes={self.list_allocation_bytes} "
+                f"count={self.list_allocation_count}",
+                file=sys.stderr,
+            )
+
+        return result
 
     def call_fn(self, name: str, args: list):
         fn = self.r.fns[name].decl
@@ -291,8 +307,21 @@ class Interpreter:
                                         for n, v in e.fields})
 
         if isinstance(e, a.EnumCtor):
-            return EnumValue(e.enum_name, e.variant,
-                             tuple(self.eval(x, env) for x in e.args))
+            value = EnumValue(
+                e.enum_name,
+                e.variant,
+                tuple(self.eval(x, env) for x in e.args)
+            )
+
+            if e.enum_name == "List":
+                self.list_allocation_count += 1
+
+                self.list_allocation_bytes += (
+                    sys.getsizeof(value)
+                    + sys.getsizeof(value.args)
+                )
+
+            return value
 
         if isinstance(e, a.FieldAccess):
             recv = self.eval(e.recv, env)
