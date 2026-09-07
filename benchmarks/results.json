@@ -1,253 +1,257 @@
 {
-  "check_median_ms_across_examples": 120.7,
-  "run_median_ms_across_examples": 121.47,
-  "build_hello_clean_ms": 168.24,
-  "build_hello_cached_ms": 121.12,
+  "check_median_ms_across_examples": 811.12,
+  "run_median_ms_across_examples": 885.91,
+  "build_hello_clean_ms": 919.5,
+  "build_hello_cached_ms": 927.6,
   "per_file": {
     "check": {
       "authority.nova": {
-        "median_ms": 124.98,
-        "min_ms": 120.41,
-        "ok": true
+        "median_ms": 1012.95,
+        "min_ms": 519.17,
+        "ok": false
       },
       "campus-platform.nova": {
-        "median_ms": 119.96,
-        "min_ms": 119.65,
-        "ok": true
+        "median_ms": 803.33,
+        "min_ms": 562.35,
+        "ok": false
       },
       "cli-program.nova": {
-        "median_ms": 121.17,
-        "min_ms": 119.44,
-        "ok": true
+        "median_ms": 937.62,
+        "min_ms": 652.33,
+        "ok": false
       },
       "combined-request-handler.nova": {
-        "median_ms": 120.92,
-        "min_ms": 119.86,
-        "ok": true
+        "median_ms": 1092.91,
+        "min_ms": 818.44,
+        "ok": false
       },
       "enterprise-platform.nova": {
-        "median_ms": 120.02,
-        "min_ms": 119.63,
-        "ok": true
+        "median_ms": 1051.62,
+        "min_ms": 419.97,
+        "ok": false
       },
       "enums-and-pattern-matching.nova": {
-        "median_ms": 121.46,
-        "min_ms": 119.67,
-        "ok": true
+        "median_ms": 1068.52,
+        "min_ms": 469.03,
+        "ok": false
       },
       "failure-lifecycle.nova": {
-        "median_ms": 120.49,
-        "min_ms": 119.38,
-        "ok": true
+        "median_ms": 1029.2,
+        "min_ms": 529.47,
+        "ok": false
       },
       "filesystem-and-network.nova": {
-        "median_ms": 120.16,
-        "min_ms": 119.22,
-        "ok": true
+        "median_ms": 925.59,
+        "min_ms": 802.49,
+        "ok": false
       },
       "generic-box-and-trait.nova": {
-        "median_ms": 119.94,
-        "min_ms": 119.05,
-        "ok": true
+        "median_ms": 848.65,
+        "min_ms": 428.91,
+        "ok": false
       },
       "generic-collection-list.nova": {
-        "median_ms": 120.25,
-        "min_ms": 119.27,
-        "ok": true
+        "median_ms": 506.29,
+        "min_ms": 475.29,
+        "ok": false
       },
       "generics-basics.nova": {
-        "median_ms": 119.83,
-        "min_ms": 119.49,
-        "ok": true
+        "median_ms": 961.89,
+        "min_ms": 459.38,
+        "ok": false
       },
       "hello.nova": {
-        "median_ms": 119.52,
-        "min_ms": 118.64,
-        "ok": true
+        "median_ms": 632.71,
+        "min_ms": 448.96,
+        "ok": false
       },
       "http-like.nova": {
-        "median_ms": 119.82,
-        "min_ms": 118.56,
-        "ok": true
+        "median_ms": 665.78,
+        "min_ms": 521.31,
+        "ok": false
       },
       "mutability-and-loops.nova": {
-        "median_ms": 120.96,
-        "min_ms": 119.56,
-        "ok": true
+        "median_ms": 769.49,
+        "min_ms": 440.98,
+        "ok": false
       },
       "option-basics.nova": {
-        "median_ms": 122.2,
-        "min_ms": 120.59,
-        "ok": true
+        "median_ms": 842.84,
+        "min_ms": 494.5,
+        "ok": false
       },
       "recursive-list-processing.nova": {
-        "median_ms": 121.4,
-        "min_ms": 120.62,
-        "ok": true
+        "median_ms": 653.63,
+        "min_ms": 462.01,
+        "ok": false
       },
       "result-error-handling.nova": {
-        "median_ms": 120.7,
-        "min_ms": 120.42,
-        "ok": true
+        "median_ms": 727.77,
+        "min_ms": 469.05,
+        "ok": false
       },
       "retry.nova": {
-        "median_ms": 121.6,
-        "min_ms": 119.56,
-        "ok": true
+        "median_ms": 818.92,
+        "min_ms": 544.22,
+        "ok": false
       },
       "structs-and-capabilities.nova": {
-        "median_ms": 120.49,
-        "min_ms": 119.55,
-        "ok": true
+        "median_ms": 776.6,
+        "min_ms": 522.16,
+        "ok": false
       },
       "structs-basic.nova": {
-        "median_ms": 120.71,
-        "min_ms": 120.19,
-        "ok": true
+        "median_ms": 749.04,
+        "min_ms": 391.54,
+        "ok": false
       },
       "timing.nova": {
-        "median_ms": 120.26,
-        "min_ms": 120.14,
-        "ok": true
+        "median_ms": 735.05,
+        "min_ms": 510.54,
+        "ok": false
       },
       "traits-basics.nova": {
-        "median_ms": 120.88,
-        "min_ms": 120.03,
-        "ok": true
+        "median_ms": 765.5,
+        "min_ms": 488.31,
+        "ok": false
       },
       "tuples.nova": {
-        "median_ms": 122.71,
-        "min_ms": 121.51,
-        "ok": true
+        "median_ms": 762.91,
+        "min_ms": 538.43,
+        "ok": false
       },
       "widen-and-audit.nova": {
-        "median_ms": 120.75,
-        "min_ms": 120.06,
-        "ok": true
+        "median_ms": 914.56,
+        "min_ms": 737.58,
+        "ok": false
       }
     },
     "run": {
       "authority.nova": {
-        "median_ms": 120.34,
-        "min_ms": 120.25,
-        "ok": true
+        "median_ms": 650.78,
+        "min_ms": 485.3,
+        "ok": false
       },
       "campus-platform.nova": {
-        "median_ms": 135.27,
-        "min_ms": 122.53,
+        "median_ms": 933.45,
+        "min_ms": 827.64,
         "ok": false
       },
       "cli-program.nova": {
-        "median_ms": 123.34,
-        "min_ms": 122.66,
+        "median_ms": 995.21,
+        "min_ms": 777.72,
         "ok": false
       },
       "combined-request-handler.nova": {
-        "median_ms": 121.76,
-        "min_ms": 121.43,
+        "median_ms": 1190.08,
+        "min_ms": 956.97,
         "ok": false
       },
       "enterprise-platform.nova": {
-        "median_ms": 124.47,
-        "min_ms": 123.47,
-        "ok": true
+        "median_ms": 746.23,
+        "min_ms": 649.77,
+        "ok": false
       },
       "enums-and-pattern-matching.nova": {
-        "median_ms": 121.37,
-        "min_ms": 119.71,
+        "median_ms": 626.43,
+        "min_ms": 546.92,
         "ok": false
       },
       "failure-lifecycle.nova": {
-        "median_ms": 122.25,
-        "min_ms": 121.01,
-        "ok": true
+        "median_ms": 874.0,
+        "min_ms": 520.42,
+        "ok": false
       },
       "filesystem-and-network.nova": {
-        "median_ms": 122.93,
-        "min_ms": 121.32,
-        "ok": true
+        "median_ms": 668.52,
+        "min_ms": 587.64,
+        "ok": false
       },
       "generic-box-and-trait.nova": {
-        "median_ms": 121.4,
-        "min_ms": 121.28,
-        "ok": true
+        "median_ms": 403.53,
+        "min_ms": 401.19,
+        "ok": false
       },
       "generic-collection-list.nova": {
-        "median_ms": 122.07,
-        "min_ms": 120.74,
+        "median_ms": 869.43,
+        "min_ms": 618.5,
         "ok": false
       },
       "generics-basics.nova": {
-        "median_ms": 125.47,
-        "min_ms": 124.18,
+        "median_ms": 1116.76,
+        "min_ms": 1011.35,
         "ok": false
       },
       "hello.nova": {
-        "median_ms": 119.62,
-        "min_ms": 119.53,
-        "ok": true
+        "median_ms": 1385.82,
+        "min_ms": 594.68,
+        "ok": false
       },
       "http-like.nova": {
-        "median_ms": 121.13,
-        "min_ms": 121.03,
+        "median_ms": 640.7,
+        "min_ms": 535.33,
         "ok": false
       },
       "mutability-and-loops.nova": {
-        "median_ms": 120.31,
-        "min_ms": 120.17,
+        "median_ms": 893.17,
+        "min_ms": 888.13,
         "ok": false
       },
       "option-basics.nova": {
-        "median_ms": 120.75,
-        "min_ms": 120.63,
+        "median_ms": 1233.59,
+        "min_ms": 859.77,
         "ok": false
       },
       "recursive-list-processing.nova": {
-        "median_ms": 121.15,
-        "min_ms": 120.83,
+        "median_ms": 1014.71,
+        "min_ms": 907.08,
         "ok": false
       },
       "result-error-handling.nova": {
-        "median_ms": 120.65,
-        "min_ms": 120.03,
+        "median_ms": 878.66,
+        "min_ms": 801.85,
         "ok": false
       },
       "retry.nova": {
-        "median_ms": 121.25,
-        "min_ms": 120.57,
+        "median_ms": 924.97,
+        "min_ms": 675.95,
         "ok": false
       },
       "structs-and-capabilities.nova": {
-        "median_ms": 121.54,
-        "min_ms": 120.88,
-        "ok": true
+        "median_ms": 1030.3,
+        "min_ms": 926.59,
+        "ok": false
       },
       "structs-basic.nova": {
-        "median_ms": 120.94,
-        "min_ms": 120.53,
+        "median_ms": 727.25,
+        "min_ms": 707.88,
         "ok": false
       },
       "timing.nova": {
-        "median_ms": 120.96,
-        "min_ms": 120.76,
-        "ok": true
+        "median_ms": 786.68,
+        "min_ms": 555.12,
+        "ok": false
       },
       "traits-basics.nova": {
-        "median_ms": 123.64,
-        "min_ms": 122.97,
-        "ok": true
+        "median_ms": 1175.18,
+        "min_ms": 452.87,
+        "ok": false
       },
       "tuples.nova": {
-        "median_ms": 121.98,
-        "min_ms": 121.67,
+        "median_ms": 1010.28,
+        "min_ms": 983.98,
         "ok": false
       },
       "widen-and-audit.nova": {
-        "median_ms": 122.4,
-        "min_ms": 121.52,
+        "median_ms": 852.61,
+        "min_ms": 768.13,
         "ok": false
       }
     }
+  },
+  "list_allocations": {
+    "ok": false,
+    "error": "returncode=16\nstdout=\nstderr="
   },
   "note": "Wall-clock on this machine. Not a cross-language comparison \u2014 see README.md."
 }
