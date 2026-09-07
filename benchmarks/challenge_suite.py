@@ -52,29 +52,78 @@ def _sample_files() -> list[str]:
             files.append(os.path.join(EXAMPLES, name))
     return files
 
+def _nova_cmd(*args: str) -> list[str]:
+    return ["bash", "./nova", *args]
 
 def bench_check(files: list[str]) -> dict:
     out = {}
     for f in files:
-        out[os.path.basename(f)] = _time([NOVA, "check", f])
+        out[os.path.basename(f)] = _time(_nova_cmd("check", f))
+
     return out
 
 
 def bench_build_cache(sample: str) -> dict:
     """Clean vs. cached build for one file."""
-    clean = _time([NOVA, "build", sample, "-o", "/tmp/nova_bench_out",
-                   "--clean"], repeats=3)
-    cached = _time([NOVA, "build", sample, "-o", "/tmp/nova_bench_out"],
-                   repeats=REPEATS)
+    clean = _time(
+        _nova_cmd("build", sample, "-o", "/tmp/nova_bench_out", "--clean"),
+        repeats=3
+    )
+    cached = _time(
+        _nova_cmd("build", sample, "-o", "/tmp/nova_bench_out"),
+        repeats=REPEATS
+    )
     return {"clean": clean, "cached": cached}
 
 
 def bench_run(files: list[str]) -> dict:
     out = {}
     for f in files:
-        out[os.path.basename(f)] = _time([NOVA, "run", f], repeats=3)
+        out[os.path.basename(f)] = _time(_nova_cmd("run", f), repeats=3)
+
     return out
 
+def bench_list_allocations() -> dict:
+    program = "benchmarks/list_alloc.nova"
+
+    env = os.environ.copy()
+    env["NOVA_BENCH_LIST_ALLOC"] = "1"
+
+    res = subprocess.run(
+        _nova_cmd("run", program),
+        cwd=REPO_ROOT,
+        capture_output=True,
+        text=True,
+        env=env,
+    )
+
+    if res.returncode != 0:
+        return {
+            "ok": False,
+            "error": (
+                f"returncode={res.returncode}\n"
+                f"stdout={res.stdout.strip()}\n"
+                f"stderr={res.stderr.strip()}"
+            ),
+        }
+
+    for line in res.stderr.splitlines():
+        if line.startswith("NOVA_LIST_ALLOC "):
+            parts = line.split()
+
+            allocated_bytes = int(parts[1].split("=")[1])
+            allocation_count = int(parts[2].split("=")[1])
+
+            return {
+                "ok": True,
+                "allocated_bytes": allocated_bytes,
+                "allocation_count": allocation_count,
+            }
+
+    return {
+        "ok": False,
+        "error": "Allocation metrics were not produced",
+    }
 
 def main(argv: list[str]) -> int:
     as_json = "--json" in argv
@@ -90,6 +139,8 @@ def main(argv: list[str]) -> int:
     build = bench_build_cache(hello)
     run = bench_run(files)
 
+    list_allocations = bench_list_allocations()
+
     check_med = statistics.median(v["median_ms"] for v in check.values())
     run_med = statistics.median(v["median_ms"] for v in run.values())
 
@@ -99,6 +150,7 @@ def main(argv: list[str]) -> int:
         "build_hello_clean_ms": build["clean"]["median_ms"],
         "build_hello_cached_ms": build["cached"]["median_ms"],
         "per_file": {"check": check, "run": run},
+        "list_allocations": list_allocations,
         "note": ("Wall-clock on this machine. Not a cross-language "
                  "comparison — see README.md."),
     }
